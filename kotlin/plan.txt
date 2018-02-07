@@ -1,0 +1,41 @@
+Markup specification:
+    everything functions like html tags
+
+<math> opens a math environment that takes latex literals or tags, equivalent to "\begin{align*}" in latex
+tags like <matrix> outside of a math tag should function like there's an implicit "$$" enclosing the matrix
+<ilmath> creates inline math stuff (single dollar sign)
+
+TODO: allow for implicit filling of matrix elements with 0 if not specified? for example:
+	1
+	0, 1
+	0, 0, 1
+	creates the 3x3 identity
+
+<head> allows for defining of name, SID, homework number
+by default, it will include all the random importing stuff in the template, but those fields should be settable
+
+<prob name="name"> creates a new problem, i.e. "\subsection*{name}"
+<part name="name"> creates a new part, inserint an enumerate tag if necessary and then adding "\item name"
+
+all environments should treat strings like latex literals (except \< and \>, which need to be translated)
+
+finally, the <pdf> tag includes the pdf at the specified URI, and the <img> tag does likewise for an image
+
+
+USAGE:
+    ./templater [--make [number]] [--compile [file]]
+    Available commands:
+        make: generates a template for a given homework number, from some json file somewhere
+        compile: turns the template into a .tex
+also have backticks represent alignment characters
+
+probably put some configuration file/json somewhere
+
+
+things that didn't show up in the example:
+	- italics (<i></i>)
+	- pdf inclusion
+	- page breaks (<pbr>)
+	- itemize, enumerate, and other lists
+	- literal, for straight up evaluation
+	- means of typing lt/lte, etc

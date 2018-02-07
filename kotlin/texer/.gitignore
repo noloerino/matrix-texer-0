@@ -1,0 +1,9 @@
+# metadata probably
+META-INF
+
+# class files and stuff
+*.class
+texer/
+
+# just in case
+node_modules
